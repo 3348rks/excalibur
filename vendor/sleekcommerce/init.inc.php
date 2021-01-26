@@ -54,8 +54,8 @@ $request_uri="http://".$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
 */
 $cart=CartCtl::Get(SessionCtl::GetSession());
 
-putenv('LC_MESSAGES='.$language);
-setlocale(LC_MESSAGES, $language);
+putenv("LC_MESSAGES=$language");
+@setlocale(LC_MESSAGES, $language);
 // Specify the location of the translation tables
 bindtextdomain($language, PROJECTPATH.'/var/languages');
 bind_textdomain_codeset($language, 'UTF-8');
