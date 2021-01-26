@@ -1,7 +1,6 @@
 /*
  * This file is a short setup - instruction for the excalibur framework. A shop - framework built to interact with sleekshop.
  *
- *
  * (c) 2020 - Kaveh Raji <kr@sleekshop.io>
  *
  */
