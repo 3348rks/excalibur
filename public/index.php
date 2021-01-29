@@ -124,9 +124,7 @@ $app->get('/', function () use ($app, $language, $menu, $username, $cart) {
     $app->log->info("Slim-Skeleton '/' route");
     // Render index viewdd
 	$res=ShopobjectsCtl::GetShopObjects(START_ID, $language, "price", "ASC", 0, 0, array("name","img1","price","short_description"));
-	dd($res);die;
-    $app->render('homepage.html', array("res"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"language"=>$language));
-    // $app->render('index.html', array("res"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"language"=>$language));
+    $app->render('landing.html', array("res"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"language"=>$language));
 });
 
 // Define routes

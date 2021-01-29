@@ -1,0 +1,42 @@
+<section id="hero-1" class="hero-section division">
+
+    <!-- SLIDER -->
+    <div class="slider">
+        <ul class="slides">
+
+            {% for value in res.contents.byclass.teaser_pic %}
+            <!-- SLIDE #1 -->
+            <li id="slide-{{loop.index}}">
+
+                <!-- Background Image -->
+                <img src="{{ value.attributes.img.value }}" alt="slide-background">
+
+                <!-- Image Caption -->
+                <div class="caption d-flex align-items-center center-align">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="caption-txt white-color">
+
+                                    <!-- Title -->
+                                    <div class="title">
+                                        <h2>{{ value.attributes.headline.value }}</h2>
+                                    </div>
+
+                                    <!-- Text -->
+                                    <p>{{ value.attributes.text.value }}</p>
+
+                                </div>
+                            </div>
+                        </div> <!-- End row -->
+                    </div> <!-- End container -->
+                </div> <!-- End Image Caption -->
+
+            </li> <!-- END SLIDE #1 -->
+
+            {% endfor %}
+
+        </ul>
+    </div> <!-- END SLIDER -->
+
+</section>
