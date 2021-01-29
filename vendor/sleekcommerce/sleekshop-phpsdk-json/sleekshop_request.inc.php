@@ -4,9 +4,9 @@
 * version: 1.3.0.0
 * (c) sleekcommerce - Kaveh Raji
 */
-define("LICENCE_USERNAME","");
-define("SERVER","http://172.17.0.2/srv/service/");
-define("LICENCE_PASSWORD","");
+define("LICENCE_USERNAME","webhunt_yN5dwT1w6Pg0nnD9hHXg");
+define("SERVER","http://webHunt.sleekshop.net/srv/service/");
+define("LICENCE_PASSWORD","3lq8xVHUlVlz7cl3vVwT");
 
 class SleekShopRequest
 {
