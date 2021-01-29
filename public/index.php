@@ -1,12 +1,11 @@
 <?php
 
 
-// function dd($var)
-// {
-// 	echo '<pre>';
-// 	echo print_r($var);
-// 	echo '</pre>';
-// }
+function dd($var) {
+	echo '<pre>';
+	echo print_r($var);
+	echo '</pre>';
+}
 
 if (!defined("TEMPLATE_PATH")) {
     define("TEMPLATE_PATH", "../templates");
@@ -125,7 +124,7 @@ $app->get('/', function () use ($app, $language, $menu, $username, $cart) {
     $app->log->info("Slim-Skeleton '/' route");
     // Render index viewdd
 	$res=ShopobjectsCtl::GetShopObjects(START_ID, $language, "price", "ASC", 0, 0, array("name","img1","price","short_description"));
-	// dd($res);die;
+	dd($res);die;
     $app->render('homepage.html', array("res"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"language"=>$language));
     // $app->render('index.html', array("res"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"language"=>$language));
 });
@@ -136,6 +135,7 @@ $app->get('/new', function () use ($app, $language, $menu, $username, $cart, $ba
     $app->log->info("Slim-Skeleton '/' route");
     // Render index viewdd
     $res=ShopobjectsCtl::GetShopObjects(START_ID, $language, "price", "ASC", 0, 0, array("name","img1","price","short_description"));
+    // dd($res);die;
     $app->render('homepage.html', array("res"=>$res,'about_us'=> $about_us, 'base_url'=>  $base_url, 'menu_one'=>$menu_one));
 });
 
@@ -597,6 +597,7 @@ $app->get('/:obj', function ($obj) use ($app, $request_uri, $language, $menu, $u
         $tags=explode(",", $res["attributes"]["tags"]["value"]);
         $res["attributes"]["tags"]["arr"]=$tags;
         // $app->render('show_product.html', array("res"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
+        // dd($res);die;
         $app->render('show_product.html', array("res"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
     }
 });

@@ -69,11 +69,21 @@
                 <h5 class="h5-xs yellow-color">{{value.attributes.price.value|number_format(2)}}EUR</h5>
             </div>
 
+            <form method="post" action="add_to_cart">
             <!-- Add To Cart -->
-            <div class="add-to-cart bg-yellow ico-10">
-                <a href="product-single.html"><span class="flaticon-shopping-bag"></span> Add to
-                    Cart</a>
-            </div>
+                <div class="add-to-cart bg-yellow ico-10">
+                    <!-- <a href="product-single.html"><span class="flaticon-shopping-bag"></span> Add to Cart</a> -->
+                    <button type="submit" class="btn btn-sm">Add to Cart</button>
+                </div>
+                <input type="hidden" name="id_product" value="{{ value.id }}">
+                <input type="hidden" name="quantity" value="1">
+                <input type="hidden" name="pic" value="{{ value.attributes.img1.value }}">
+                <input type="hidden" name="price" value="{{ value.attributes.price.value }}">
+                <input type="hidden" name="name" value="{{ value.attributes.name.value }}">
+                <input type="hidden" name="short_description" value="{{ value.attributes.short_description.value }}">
+                <input type="hidden" name="size_txt" value="{{ value.attributes.size.value }}">
+                <input type="hidden" name="color_txt" value="{{ value.attributes.color.value }}">
+            </form>
 
         </div>
 
