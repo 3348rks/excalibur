@@ -27,7 +27,7 @@
                     <li><a href="#">&nbsp;</a></li>
                     <li><a href="#">&nbsp;</a></li>
                     <li>
-                        <a href="#">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     {% for item in menu %}
                     <li {% if loop.index==0 %}class="" {% endif %} {% if item.children|length>0 %} class="dropdown" {%
@@ -52,17 +52,13 @@
                     </li>
                     {% endfor %}
 
-                    <!-- <li>
-                        <a href="#">About</a>
+                    <li>
+                        <a href="#">SIGN IN</a>
                         <ul>
-                            <li><a href="about.html">About Testo</a></li>
-                            <li><a href="team.html">Meet The Team</a></li>
-                            <li><a href="gallery.html">Images Gallery</a></li>
-                            <li><a href="gift-cards.html">Gift Cards</a></li>
-                            <li><a href="faqs.html">F.A.Q.s</a></li>
-                            <li><a href="terms.html">Terms & Privacy</a></li>
+                            <li><a href="{{base_url}}login">LOGIN</a></li>
+                            <li><a href="{{base_url}}register">REGISTERATION</a></li>
                         </ul>
-                    </li> -->
+                    </li>
 
                     <!-- BASKET ICON -->
                     <li class="basket-ico ico-30">
