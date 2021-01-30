@@ -24,7 +24,10 @@
             <div class="hover-overlay">
 
                 <!-- Image -->
-                <img class="img-fluid" src="{{ value.attributes.img1.value }}" alt="menu-image" />
+
+                <a class="" href="{{value.permalink}}">
+                    <img class="img-fluid" src="{{ value.attributes.img1.value }}" alt="menu-image" />
+                </a>
 
                 <!-- Item Code -->
                 <span class="item-code bg-tra-dark">Code: {{value.permalink}}</span>
@@ -59,6 +62,7 @@
             </div>
 
             <!-- Title -->
+            <a class="" href="{{value.permalink}}"></a>
             <h5 class="h5-sm coffee-color">{{value.attributes.name.value }}</h5>
 
             <!-- Description -->

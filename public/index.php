@@ -7,12 +7,6 @@ function dd($var) {
 	echo '</pre>';
 }
 
-function siteURL() {
-    $protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === 0 ? 'https://' : 'http://';
-    $domainName = $_SERVER['HTTP_HOST'].'/';
-    return $protocol.$domainName;
-}
-
 if (!defined("TEMPLATE_PATH")) {
     define("TEMPLATE_PATH", "../templates");
 }
@@ -117,10 +111,12 @@ $app->get('/change-lang', function () use ($app, $language, $menu, $username, $c
 });
 
 
-$base_url       = siteURL();
-$about_us       = $base_url.'about-us';
-$menu_one       = $base_url.'main-menus';
-$single_product = $base_url.'single-product';
+    
+$about_us = 'http://example.io/about-us';
+$menu_one = 'http://example.io/main-menus';
+$base_url = 'http://example.io';
+$single_product = 'http://example.io/single-product';
+// $about_us = 'http://example.io/about-us';
 
 // Define routes
 $app->get('/', function () use ($app, $language, $menu, $username, $cart) {
@@ -226,7 +222,7 @@ $app->post('/add_to_cart', function () use ($app, $request_uri, $language, $menu
 });
 
 
-$app->post('/login', function () use ($app, $request_uri, $language, $menu, $username, $cart,$base_url) {
+$app->post('/login', function () use ($app, $request_uri, $language, $menu, $username, $cart) {
     $username=$app->request->post("username");
     $passwd=$app->request->post("password");
     $res=UserCtl::Login(SessionCtl::GetSession(), $username, $passwd);
@@ -236,13 +232,13 @@ $app->post('/login', function () use ($app, $request_uri, $language, $menu, $use
         $res=UserCtl::GetUserData(SessionCtl::GetSession());
         $profile=$app->request->post("profile");
         if ($profile!=1) {
-            $app->render('userdata.html', array('base_url'=>$base_url,"userdata"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
+            $app->render('userdata.html', array("userdata"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
         } else {
             $res=UserCtl::GetUserOrders(SessionCtl::GetSession());
-            $app->render('profile.html', array('base_url'=>$base_url,"res"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
+            $app->render('profile.html', array("res"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
         }
     } else {
-        $app->render('login.html', array('base_url'=>$base_url,"error"=>1,"res"=>$res,"menu"=>$menu,"username"=>"","cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
+        $app->render('login.html', array("error"=>1,"res"=>$res,"menu"=>$menu,"username"=>"","cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
     }
 });
 
@@ -472,7 +468,7 @@ $app->post('/checkout', function () use ($app, $request_uri, $language, $menu, $
 });
 
 
-$app->post('/register', function () use ($app, $request_uri, $language, $menu, $username, $cart,$base_url) {
+$app->post('/register', function () use ($app, $request_uri, $language, $menu, $username, $cart) {
     $user=$app->request->post("user");
     $email=$app->request->post("email");
     $passwd1=$app->request->post("password");
@@ -483,7 +479,7 @@ $app->post('/register', function () use ($app, $request_uri, $language, $menu, $
         $res=UserCtl::RegisterUser(array("username"=>$user,"email"=>$email,"passwd1"=>$passwd1,"passwd2"=>$passwd2), $language);
         if ($res["status"]=="SUCCESS") {
             UserCtl::VerifyUser($res["id_user"], $res["session_id"]);
-            $app->render("login.html", array('base_url'=>$base_url,"error"=>0,"user"=>$user,"email"=>$email,"cart"=>$cart,"language"=>$language,"menu"=>$menu));
+            $app->render("login.html", array("error"=>0,"user"=>$user,"email"=>$email,"cart"=>$cart,"language"=>$language,"menu"=>$menu));
         } else {
             $error++;
             $error_msg=$res["status"];
@@ -521,7 +517,7 @@ $app->post('/order_summary', function () use ($app, $request_uri, $language, $me
     $app->render('order_summary.html', array("order"=>$order,"token"=>$token,"cart"=>$cart,"language"=>$language,"card_number"=>$card_number,"exp_month"=>$exp_month,"exp_year"=>$exp_year,"cvc"=>$cvc));
 });
 
-$app->get('/:obj', function ($obj) use ($app, $request_uri, $language, $menu, $username, $cart,$base_url) {
+$app->get('/:obj', function ($obj) use ($app, $request_uri, $language, $menu, $username, $cart) {
     // Sample log message
     $app->log->info("Slim-Skeleton '/' route");
 	
@@ -549,14 +545,14 @@ $app->get('/:obj', function ($obj) use ($app, $request_uri, $language, $menu, $u
         }
     } elseif ($obj=="login") {
         $profile=$app->request->get("profile");
-        $app->render('login.html', array('base_url'=>$base_url,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"profile"=>$profile,"language"=>$language));
+        $app->render('login.html', array("menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"profile"=>$profile,"language"=>$language));
     } elseif ($obj=="logout") {
         UserCtl::Logout(SessionCtl::GetSession());
         setcookie('username', "");
         $app->render('logout.html', array("menu"=>$menu,"username"=>"","cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
     } elseif ($obj=="profile") {
         if ($username=="") {
-            $app->render('login.html', array('base_url'=>$base_url,"res"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
+            $app->render('login.html', array("res"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
         } else {
             $res=UserCtl::GetUserOrders(SessionCtl::GetSession());
             $app->render('profile.html', array("res"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
@@ -573,14 +569,14 @@ $app->get('/:obj', function ($obj) use ($app, $request_uri, $language, $menu, $u
         $app->render('order_summary.html', array("order"=>$order,"token"=>$token,"cart"=>$cart,"language"=>$language,"username"=>$username));
     } elseif ($obj=="profile-userdata") {
         if ($username=="") {
-            $app->render('login.html', array('base_url'=>$base_url,"res"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
+            $app->render('login.html', array("res"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
         } else {
             $res=UserCtl::GetUserData(SessionCtl::GetSession());
             $app->render('profile_userdata.html', array("userdata"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
         }
     } elseif ($obj=="profile-password") {
         if ($username=="") {
-            $app->render('login.html', array('base_url'=>$base_url,"res"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
+            $app->render('login.html', array("res"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
         } else {
             $app->render('profile_password.html', array("menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
         }
