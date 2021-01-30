@@ -1,5 +1,39 @@
 {% extends 'main.html' %}
-{% block slider %} {% include "layouts/slider.html" %} {% endblock %}
+
+{% block slider %}
+<div id="blog-page" class="page-hero-section division" style="background-image: url(https://webhunt.sleekshop.net/srv/uploads/shopobject_images/12093318a40609ffbfee89afb1a455e6.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+        <div class="hero-txt text-center white-color">
+
+          <!-- Breadcrumb -->
+          <!-- <div id="breadcrumb">
+            <div class="row">
+              <div class="col">
+                <div class="breadcrumb-nav">
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="demo-1.html">Home</a></li>
+                      <li class="breadcrumb-item"><a href="blog-listing.html">Blog</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Blog Post</li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- Title -->
+          <!-- <h2 class="h2-xl">Single Blog Post</h2> -->
+
+        </div>
+      </div>
+    </div> <!-- End row -->
+  </div> <!-- End container -->
+</div> <!-- END PAGE HERO -->
+{% endblock %}
+
 {% block content %}
 {% include "css_js.html" %}
     {% if res==0 %}
@@ -47,7 +81,10 @@
                             <input class="qty" type="number" min="1" max="20" value="{{ value.quantity }}" id="qty" disabled="disabled">
                           </td>
                           <td data-label="Total" class="product-price-total"><h5 class="h5-md">{{ value.quantity*value.price|number_format(2)}} EUR</h5></td>
-                          <td data-label="Delete" class="td-trash"><i class="far fa-trash-alt"></i></td>
+                          <td data-label="Delete" class="td-trash">
+                            <a href="del_from_cart?id={{value.id}}"><i class="far fa-trash-alt">
+                            </i>
+                          </td>
                       </tr>
                       {%endfor%}
                   </tbody>
@@ -108,5 +145,61 @@
           </div>    <!-- END CART CHECKOUT -->
         </div>     <!-- End container --> 
       </section>  <!-- END CART PAGE -->   
+
+
+      			<!-- BANNER-3
+			============================================= -->
+			<section id="banner-3" class="bg-yellow banner-section division">
+				<div class="container">
+			 		<div class="row d-flex align-items-center">
+
+
+			 			<!-- BANNER TEXT -->
+						<div class="col-md-7 col-lg-6">
+							<div class="banner-3-txt coffee-color">
+
+								<!-- Title  -->
+								<h4 class="h4-xl">Download mobile App and</h4>
+								<h2>save up to 20%</h2>
+								
+							   <!-- Text -->	
+								<p class="p-md">Aliquam a augue suscipit, luctus neque purus ipsum and neque dolor primis libero tempus, 
+									blandit varius
+								</p>
+
+								<!-- Store Badges -->
+								<div class="stores-badge">
+
+									<!-- AppStore -->
+									<a href="#" class="store">
+										<img class="appstore-original" src="/assets/images/appstore.png" alt="appstore-logo" />
+									</a>
+													
+									<!-- Google Play -->
+									<a href="#" class="store">
+										<img class="googleplay-original" src="/assets/images/googleplay.png" alt="googleplay-logo" />
+									</a>
+												
+								</div>
+
+							</div>
+						</div>
+
+
+						<!-- BANNER IMAGE -->
+						<div class="col-md-5 col-lg-6">
+							<div class="banner-3-img">
+								<img class="img-fluid" src="/assets/images/e-shop.png" alt="banner-image">
+							</div>
+						</div>
+
+
+			 		</div>      <!-- End row -->
+				</div>	    <!-- End container -->		
+			</section>	<!-- END BANNER-3 -->
+
+
+
+
 {% endblock %}
 
