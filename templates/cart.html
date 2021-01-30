@@ -1,6 +1,7 @@
-{% extends 'page.html' %}
+{% extends 'main.html' %}
+{% block slider %} {% include "layouts/slider.html" %} {% endblock %}
 {% block content %}
-{% include "css_js.html" %}
+<!-- {% include "css_js.html" %} -->
     {% if res==0 %}
     <div class="col-md-12">
     <h1>{%trans%}Your cart is empty{%endtrans%}</h1>

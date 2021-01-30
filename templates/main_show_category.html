@@ -4,11 +4,11 @@
 <div id="blog-page" class="page-hero-section division" style="background-image: url(https://webhunt.sleekshop.net/srv/uploads/shopobject_images/12093318a40609ffbfee89afb1a455e6.jpg)">
   <div class="container">
     <div class="row">
-      <div class="col-lg-10 offset-lg-1">
-        <div class="hero-txt text-center white-color">
+      <!-- <div class="col-lg-10 offset-lg-1">
+        <div class="hero-txt text-center white-color"> -->
 
           <!-- Breadcrumb -->
-          <div id="breadcrumb">
+          <!-- <div id="breadcrumb">
             <div class="row">
               <div class="col">
                 <div class="breadcrumb-nav">
@@ -22,13 +22,13 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <!-- Title -->
-          <h2 class="h2-xl">Single Blog Post</h2>
+          <!-- <h2 class="h2-xl">Single Blog Post</h2>
 
         </div>
-      </div>
+      </div> -->
     </div> <!-- End row -->
   </div> <!-- End container -->
 </div> <!-- END PAGE HERO -->
@@ -61,7 +61,48 @@
       <option value="name-desc">Name absteigend</option>
     </select>
   </div>
-  {% include "product_listing.html" %}
+
+
+
+			<section id="gallery-2" class="gallery-section division">
+				<div class="container">
+					<div class="row">
+            <!-- IMAGE #1 -->
+            {% for value in res.products %}
+					  	<div class="col-sm-6 col-lg-3">
+					  		<div class="gallery-img">
+						  		<a href="{{ value.attributes.img1.value }}" class="image-link">
+									<div class="hover-overlay"> 
+										<img class="img-fluid" src="{{ value.attributes.img1.value }}" alt="gallery-image" />			
+										<div class="item-overlay"></div>
+
+										<!-- Image Meta -->
+										<div class="img-meta white-color">
+											<h5 class="h5-xs">{{ value.name }}</h5>		
+											<div class="txt-block-rating">
+												<!-- <div class="stars-rating">
+													<span>4.5</span>
+													<i class="fas fa-star"></i>
+													<i class="fas fa-star"></i>
+													<i class="fas fa-star"></i>
+													<i class="fas fa-star"></i>
+													<i class="fas fa-star-half-alt"></i>
+													<span>(23)</span>
+												</div>		 -->
+											</div>										 
+										</div> 
+
+									</div>
+								</a>
+							</div>
+            </div>
+            {% endfor %}
+					</div>	  <!-- End row -->
+				</div>	   <!-- End container -->
+			</section>	<!-- END GALLERY-2 -->
+
+
+
 </div>
 {% else %}
 <div class="col-md-12">Keine Produkte gefunden</div>
