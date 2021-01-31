@@ -43,8 +43,7 @@
                         {% if item.children|length>0 %}
                         <ul class="dropdown-menu" role="menu">
                             {% for sub in item.children %}
-                            <li><a
-                                    href="{% if sub.permalink!='' %}./category/{{ sub.permalink }}{% else %}./category/{{ sub.id }}{% endif %}">{{
+                            <li><a href="{% if sub.permalink!='' %}./category/{{ sub.permalink }}{% else %}./category/{{ sub.id }}{% endif %}">{{
                                     sub.label }}</a></li>
                             {% endfor %}
                         </ul>
@@ -52,13 +51,24 @@
                     </li>
                     {% endfor %}
 
-                    <li>
-                        <a href="#">SIGN IN</a>
-                        <ul>
-                            <li><a href="{{base_url}}login">LOGIN</a></li>
-                            <li><a href="{{base_url}}register">REGISTERATION</a></li>
-                        </ul>
+                     <li class="">{% if username!='' %}
+                        <a href="profile">{%trans%}You are logged in as &nbsp;{%endtrans%}{{username}}
+                        </a>{% else %}
+                        <li>
+                            <a href="#">SIGN IN</a>
+                            <ul>
+                                <li><a href="{{base_url}}login?profile=1">{%trans%}LOGIN{%endtrans%}</a></li>
+                                <li><a href="{{base_url}}register">REGISTERATION</a></li>
+                            </ul>
+                        </li>
+                        {% endif %}
                     </li>
+                    {% if username!='' %}
+                    <li><a href="logout">
+                        {%trans%}Logout{%endtrans%}
+                        </a>
+                    </li>
+                    {% endif %}
 
                     <!-- BASKET ICON -->
                     <li class="basket-ico ico-30">

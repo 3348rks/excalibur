@@ -14,9 +14,9 @@
                 <div class="breadcrumb-nav">
                   <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a href="demo-1.html">Home</a></li>
+                      <!-- <li class="breadcrumb-item"><a href="demo-1.html">Home</a></li>
                       <li class="breadcrumb-item"><a href="blog-listing.html">Blog</a></li>
-                      <li class="breadcrumb-item active" aria-current="page">Blog Post</li>
+                      <li class="breadcrumb-item active" aria-current="page">Blog Post</li> -->
                     </ol>
                   </nav>
                 </div>
@@ -25,7 +25,7 @@
           </div>
 
           <!-- Title -->
-          <h2 class="h2-xl">Single Blog Post</h2>
+          <!-- <h2 class="h2-xl">Single Blog Post</h2> -->
 
         </div>
       </div>
@@ -35,29 +35,36 @@
 {% endblock %}
 
 {%block content%}
-<div class="col-md-12">
-  <h1>{%trans%}Login{%endtrans%}</h1>
-  <br><br>
+
+<div class="container">
+    <div class="child">
+      <div class="col-md-12">
+        <br><br>
+        <h1>{%trans%}Login{%endtrans%}</h1>
+        <br><br>
+      </div>
+      <div class="col-md-6">
+        {% if error==1 %}
+        <div class="alert alert-danger" role="alert">
+          {%trans%}Username and password does not match{%endtrans%}.
+        </div>
+        {% endif %}
+        <form method="POST" action="login" class="uk-form uk-text-center">
+          <div class="form-group">
+            <label>{%trans%}Username{%endtrans%}</label><br>
+            <input type="text" class="form-control input-lg" name="username">
+          </div>
+          <div class="form-group">
+            <label>{%trans%}Password{%endtrans%}</label><br>
+            <input type="password" class="form-control input-lg" name="password">
+          </div>
+          <div class="form-group">
+            <input type="hidden" name="profile" value="{{profile}}">
+            <button type="submit" class="btn btn-lg btn-primary">{%trans%}Login{%endtrans%}</button>
+          </div>
+        </form>
+      </div>
+    </div>
 </div>
-<div class="col-md-6">
-  {% if error==1 %}
-  <div class="alert alert-danger" role="alert">
-    {%trans%}Username and password does not match{%endtrans%}.
-  </div>
-  {% endif %}
-  <form method="POST" action="login" class="uk-form uk-text-center">
-    <div class="form-group">
-      <label>{%trans%}Username{%endtrans%}</label><br>
-      <input type="text" class="form-control input-lg" name="username">
-    </div>
-    <div class="form-group">
-      <label>{%trans%}Password{%endtrans%}</label><br>
-      <input type="password" class="form-control input-lg" name="password">
-    </div>
-    <div class="form-group">
-      <input type="hidden" name="profile" value="{{profile}}">
-      <button type="submit" class="btn btn-lg btn-primary">{%trans%}Login{%endtrans%}</button>
-    </div>
-  </form>
-</div>
+
 {%endblock%}

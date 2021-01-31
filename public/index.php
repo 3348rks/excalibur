@@ -172,19 +172,19 @@ $app->get('/content/:obj', function ($obj) use ($app, $request_uri, $language, $
 
 
 
-$app->get('/category/:obj', function ($obj) use ($app, $request_uri, $language, $menu, $username, $cart) {
-    // Sample log message
-    $app->log->info("Slim-Skeleton '/' route");
-    // Render index viewdd
-    if (is_numeric($obj)) {
-        $res=ShopobjectsCtl::GetShopobjects($obj, $language, "price", "ASC", 0, 0, array("name","short_description","price","img1"));
-    } else {
-        $res=ShopobjectsCtl::SeoGetShopobjects($obj, "price", "ASC", 0, 0, array("name","short_description","price","img1"));
-    }
-    $app->render('show_category.html', array("res"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
-});
+// $app->get('/category/:obj', function ($obj) use ($app, $request_uri, $language, $menu, $username, $cart) {
+//     // Sample log message
+//     $app->log->info("Slim-Skeleton '/' route");
+//     // Render index viewdd
+//     if (is_numeric($obj)) {
+//         $res=ShopobjectsCtl::GetShopobjects($obj, $language, "price", "ASC", 0, 0, array("name","short_description","price","img1"));
+//     } else {
+//         $res=ShopobjectsCtl::SeoGetShopobjects($obj, "price", "ASC", 0, 0, array("name","short_description","price","img1"));
+//     }
+//     $app->render('show_category.html', array("res"=>$res,"menu"=>$menu,"username"=>$username,"cart"=>$cart,"request_uri"=>$request_uri,"language"=>$language));
+// });
 
-$app->get('/categoryy/:obj', function ($obj) use ($app, $request_uri, $language, $menu, $username, $cart) {
+$app->get('/category/:obj', function ($obj) use ($app, $request_uri, $language, $menu, $username, $cart) {
     // Sample log message
     $app->log->info("Slim-Skeleton '/' route");
     // Render index viewdd

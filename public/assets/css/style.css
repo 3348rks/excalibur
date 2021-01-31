@@ -460,7 +460,7 @@ ul.txt-list {
 /*------------------------------------------*/
 
 .btn {
-  background-color: transparent;
+  /*background-color: transparent;*/
   font-family: 'Oswald', sans-serif;
   color: #fff;
   font-size: 16px;
@@ -6275,5 +6275,7 @@ nav a#pull {
   display: none;  
 } 
 
-
-
+/* login page css */
+.child {
+    margin: 0 auto;
+}

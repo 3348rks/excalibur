@@ -1,12 +1,10 @@
 {%extends "main.html"%}
-
 {% block slider %}
 <div id="blog-page" class="page-hero-section division" style="background-image: url(https://webhunt.sleekshop.net/srv/uploads/shopobject_images/12093318a40609ffbfee89afb1a455e6.jpg)">
   <div class="container">
     <div class="row">
       <div class="col-lg-10 offset-lg-1">
         <div class="hero-txt text-center white-color">
-
           <!-- Breadcrumb -->
           <div id="breadcrumb">
             <div class="row">
@@ -14,58 +12,60 @@
                 <div class="breadcrumb-nav">
                   <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a href="demo-1.html">Home</a></li>
+                      <!-- <li class="breadcrumb-item"><a href="demo-1.html">Home</a></li>
                       <li class="breadcrumb-item"><a href="blog-listing.html">Blog</a></li>
-                      <li class="breadcrumb-item active" aria-current="page">Blog Post</li>
+                      <li class="breadcrumb-item active" aria-current="page">Blog Post</li> -->
                     </ol>
                   </nav>
                 </div>
               </div>
             </div>
           </div>
-
           <!-- Title -->
-          <h2 class="h2-xl">Single Blog Post</h2>
-
+          <!-- <h2 class="h2-xl">Single Blog Post</h2> -->
         </div>
       </div>
     </div> <!-- End row -->
   </div> <!-- End container -->
 </div> <!-- END PAGE HERO -->
 {% endblock %}
-
 {%block content%}
-<div class="col-md-12">
-<h1>{%trans%}Create an account{%endtrans%}</h1>
-<br><br>
-</div>
-<div class="col-md-6">
-{%if error==1%}
-<div class="alert alert-danger" role="alert">
-{%trans%}The following error occured{%endtrans%}: {{error_msg}}
-</div>
-{%endif%}
-<form method="POST" action="register" class="form">
-<div class="form-group">
-<label>{%trans%}Username{%endtrans%}</label><br>
-<input type="input" class="form-control input-lg" name="user" value="{{user}}">
-</div>
-<div class="form-group">
-<label>{%trans%}E-Mail{%endtrans%}</label><br>
-<input type="input" class="form-control input-lg" name="email" value="{{email}}">
-</div>
-<div class="form-group">
-<label>{%trans%}Password{%endtrans%}</label><br>
-<input type="password" class="form-control input-lg" name="password">
-</div>
-<div class="form-group">
-<label>{%trans%}Repeat password{%endtrans%}</label><br>
-<input type="password" class="form-control input-lg" name="password2">
-</div>
-<div class="form-group">
-<button type="submit" class="btn btn-lg btn-primary">{%trans%}Register{%endtrans%}</button>
-<input type="hidden" name="already_sent" value="1">
-</div>
-</form>
-</div>
+  <div class="container">
+      <div class="child">
+         <div class="col-md-12">
+          <br><br>
+          <h1>{%trans%}Create an account{%endtrans%}</h1>
+          <br><br>
+          </div>
+          <div class="col-md-6">
+          {%if error==1%}
+          <div class="alert alert-danger" role="alert">
+          {%trans%}The following error occured{%endtrans%}: {{error_msg}}
+          </div>
+          {%endif%}
+            <form method="POST" action="register" class="form">
+              <div class="form-group">
+                <label>{%trans%}Username{%endtrans%}</label><br>
+                  <input type="input" class="form-control input-lg" name="user" value="{{user}}">
+              </div>
+              <div class="form-group">
+                <label>{%trans%}E-Mail{%endtrans%}</label><br>
+                <input type="input" class="form-control input-lg" name="email" value="{{email}}">
+              </div>
+              <div class="form-group">
+                <label>{%trans%}Password{%endtrans%}</label><br>
+                <input type="password" class="form-control input-lg" name="password">
+              </div>
+              <div class="form-group">
+                <label>{%trans%}Repeat password{%endtrans%}</label><br>
+                <input type="password" class="form-control input-lg" name="password2">
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-lg btn-primary">{%trans%}Register{%endtrans%}</button>
+                <input type="hidden" name="already_sent" value="1">
+              </div>
+            </form>
+          </div>    
+      </div>
+  </div>
 {%endblock%}
