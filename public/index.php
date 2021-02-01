@@ -7,6 +7,13 @@ function dd($var) {
 	echo '</pre>';
 }
 
+function siteURL() {
+    $protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === 0 ? 'https://' : 'http://';
+    $domainName = $_SERVER['HTTP_HOST'].'/';
+    return $protocol.$domainName;
+}
+$base_url = siteURL();
+
 if (!defined("TEMPLATE_PATH")) {
     define("TEMPLATE_PATH", "../templates");
 }
@@ -110,14 +117,6 @@ $app->get('/change-lang', function () use ($app, $language, $menu, $username, $c
     $app->redirect("/");
 });
 
-
-    
-$about_us = 'http://example.io/about-us';
-$menu_one = 'http://example.io/main-menus';
-$base_url = 'http://example.io';
-$single_product = 'http://example.io/single-product';
-// $about_us = 'http://example.io/about-us';
-
 // Define routes
 $app->get('/', function () use ($app, $language, $menu, $username, $cart) {
     // Sample log message
@@ -129,37 +128,37 @@ $app->get('/', function () use ($app, $language, $menu, $username, $cart) {
 });
 
 // Define routes
-$app->get('/new', function () use ($app, $language, $menu, $username, $cart, $base_url, $about_us, $menu_one) {
+$app->get('/new', function () use ($app, $language, $menu, $username, $cart, $base_url) {
     // Sample log message
     $app->log->info("Slim-Skeleton '/' route");
     // Render index viewdd
     $res=ShopobjectsCtl::GetShopObjects(START_ID, $language, "price", "ASC", 0, 0, array("name","img1","price","short_description"));
     // dd($res);die;
-    $app->render('homepage.html', array("res"=>$res,'about_us'=> $about_us, 'base_url'=>  $base_url, 'menu_one'=>$menu_one));
+    $app->render('homepage.html', array("res"=> $res, 'base_url'=>  $base_url));
 });
 
-$app->get('/about-us', function () use ($app, $language, $menu, $username, $cart, $base_url, $about_us, $menu_one) {
+$app->get('/about-us', function () use ($app, $language, $menu, $username, $cart, $base_url ) {
     // Sample log message
     $app->log->info("Slim-Skeleton '/' route");
     // Render index viewdd
     // $res=ShopobjectsCtl::GetShopObjects(START_ID,$language,"price","ASC",0,0,array("name","img1","price","short_description"));
-    $app->render('about.html', array('about_us'=> $about_us, 'base_url'=>  $base_url, 'menu_one'=>$menu_one));
+    $app->render('about.html', array('about_us'=> $about_us, 'base_url'=>  $base_url));
 });
 
-$app->get('/main-menus', function () use ($app, $language, $menu, $username, $cart, $base_url, $about_us, $menu_one, $single_product) {
+$app->get('/main-menus', function () use ($app, $language, $menu, $username, $cart, $base_url) {
     // Sample log message
     $app->log->info("Slim-Skeleton '/' route");
     // Render index viewdd
     // $res=ShopobjectsCtl::GetShopObjects(START_ID,$language,"price","ASC",0,0,array("name","img1","price","short_description"));
-    $app->render('menu1.html', array('about_us'=> $about_us, 'base_url'=>  $base_url, 'menu_one'=>$menu_one, 'single_product'=> $single_product));
+    $app->render('menu1.html', array('base_url'=>  $base_url ));
 });
 
-$app->get('/single-product', function () use ($app, $language, $menu, $username, $cart, $base_url, $about_us, $menu_one, $single_product) {
+$app->get('/single-product', function () use ($app, $language, $menu, $username, $cart, $base_url) {
     // Sample log message
     $app->log->info("Slim-Skeleton '/' route");
     // Render index viewdd
     // $res=ShopobjectsCtl::GetShopObjects(START_ID,$language,"price","ASC",0,0,array("name","img1","price","short_description"));
-    $app->render('single_product.html', array('about_us'=> $about_us, 'base_url'=>  $base_url, 'menu_one'=>$menu_one, 'single_product'=> $single_product));
+    $app->render('single_product.html', array('base_url'=> $base_url));
 });
 
 

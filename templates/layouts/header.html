@@ -33,17 +33,17 @@
                     <li {% if loop.index==0 %}class="" {% endif %} {% if item.children|length>0 %} class="dropdown" {%
                         endif %}>
                         {% if item.children|length>0 %}
-                        <a href="show_category.php?id={{ item.id }}" class="dropdown-toggle" data-toggle="dropdown"
+                        <a href="ashow_category.php?id={{ item.id }}" class="dropdown-toggle" data-toggle="dropdown"
                             role="button" aria-expanded="false">{{ item.label }}<span class="caret"></span></a>
                         {% else %}
                         <a
-                            href="{% if item.permalink!='' %}./category/{{ item.permalink }}{% else %}./category/{{ item.id }}{% endif %}">{{
+                            href="/{% if item.permalink!='' %}./category/{{ item.permalink }}{% else %}./category/{{ item.id }}{% endif %}">{{
                             item.label }}</a>
                         {% endif %}
                         {% if item.children|length>0 %}
                         <ul class="dropdown-menu" role="menu">
                             {% for sub in item.children %}
-                            <li><a href="{% if sub.permalink!='' %}./category/{{ sub.permalink }}{% else %}./category/{{ sub.id }}{% endif %}">{{
+                            <li><a href="/{% if sub.permalink!='' %}./category/{{ sub.permalink }}{% else %}./category/{{ sub.id }}{% endif %}">{{
                                     sub.label }}</a></li>
                             {% endfor %}
                         </ul>
@@ -57,8 +57,8 @@
                         <li>
                             <a href="#">SIGN IN</a>
                             <ul>
-                                <li><a href="{{base_url}}login?profile=1">{%trans%}LOGIN{%endtrans%}</a></li>
-                                <li><a href="{{base_url}}register">REGISTERATION</a></li>
+                                <li><a href="{{base_url}}/login?profile=1">{%trans%}LOGIN{%endtrans%}</a></li>
+                                <li><a href="{{base_url}}/register">REGISTERATION</a></li>
                             </ul>
                         </li>
                         {% endif %}
