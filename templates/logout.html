@@ -1,9 +1,51 @@
-{% extends "page.html" %}
+{% extends "main.html" %}
+
+{% block slider %}
+<div id="blog-page" class="page-hero-section division" style="background-image: url(https://webhunt.sleekshop.net/srv/uploads/shopobject_images/12093318a40609ffbfee89afb1a455e6.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+        <div class="hero-txt text-center white-color">
+
+          <!-- Breadcrumb -->
+          <div id="breadcrumb">
+            <div class="row">
+              <div class="col">
+                <div class="breadcrumb-nav">
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                     <!--  <li class="breadcrumb-item"><a href="demo-1.html">Home</a></li>
+                      <li class="breadcrumb-item"><a href="blog-listing.html">Blog</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Blog Post</li> -->
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Title -->
+          <!-- <h2 class="h2-xl">Single Blog Post</h2> -->
+
+        </div>
+      </div>
+    </div> <!-- End row -->
+  </div> <!-- End container -->
+</div> <!-- END PAGE HERO -->
+{% endblock %}
 
 {% block content %}
-<div class="col-md-12">
-<h1>{%trans%}You successfully logged out{%endtrans%}</h1>
-<br><br>
-<a href="index.php" class="btn btn-lg btn-primary">{%trans%}Back to shop{%endtrans%}</a>
+{% include "css_js.html" %}
+<div class="container">
+	<div class="child">
+		<div class="row">
+			<div class="col-md-12"><br><br>
+				<h1>{%trans%}You are successfully logged out{%endtrans%}</h1>
+				<br><br>
+				<a href="index.php" class="btn btn-lg btn-primary">{%trans%}Back to shop{%endtrans%}</a>
+			</div>			
+		</div>
+	</div>
 </div>
+
 {% endblock %}

@@ -9,21 +9,21 @@
         <div class="hero-txt text-center white-color">
 
           <!-- Breadcrumb -->
-          <!-- <div id="breadcrumb">
+          <div id="breadcrumb">
             <div class="row">
               <div class="col">
                 <div class="breadcrumb-nav">
                   <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a href="demo-1.html">Home</a></li>
+                     <!--  <li class="breadcrumb-item"><a href="demo-1.html">Home</a></li>
                       <li class="breadcrumb-item"><a href="blog-listing.html">Blog</a></li>
-                      <li class="breadcrumb-item active" aria-current="page">Blog Post</li>
+                      <li class="breadcrumb-item active" aria-current="page">Blog Post</li> -->
                     </ol>
                   </nav>
                 </div>
               </div>
             </div>
-          </div> -->
+          </div>
 
           <!-- Title -->
           <!-- <h2 class="h2-xl">Single Blog Post</h2> -->
@@ -116,7 +116,7 @@
                   <!-- Add To Cart -->
                   <div class="add-to-cart-btn bg-yellow ico-20 text-center">
                     <!-- <a href="cart.html"><span class="flaticon-shopping-bag"></span> Add to Cart</a> -->
-                     <button class="btn btn-lg btn-primary" value="{%trans%}Add to cart{%endtrans%}">{%trans%}Add to cart{%endtrans%}</button>
+                     <button class="btn btn-lg btn-primary" value="{%trans%}Add to cart{%endtrans%}" style="background-color: #f7be27;">{%trans%}Add to cart{%endtrans%}</button>
                   </div>
                   <input type="hidden" name="id_product" value="{{ res.id }}">
                   <input type="hidden" name="pic" value="{{ res.attributes.img1.value }}">
